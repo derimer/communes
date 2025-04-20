@@ -1,9 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Applique un dégradé linéaire à l'arrière-plan du document
+  document.body.style.background = 'linear-gradient(to right,rgb(41, 31, 29),rgb(85, 67, 52))';
+  document.body.style.height = '100vh'; // Assure que le dégradé couvre toute la hauteur de la page
+  document.body.style.margin = '0'; // Supprime les marges par défaut
+
   // Applique le style au header
   let header = document.querySelector('header');
   header.style.display = 'flex';
   header.style.backgroundColor = '#ebdef0';
-  header.style.color = '#4CAF50';
+  header.style.color = 'black';
   header.style.textAlign = 'center';
   header.style.justifyContent = 'center';
   header.style.display = 'flex';
@@ -16,12 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Créez une boîte de dialogue personnalisée
   const dialogContainer = document.createElement('div');
-  dialogContainer.style.position = 'absolute';
+  dialogContainer.style.position = 'relative';
   dialogContainer.style.top = '150px'; // Ajoute un margin-top de 150px
   dialogContainer.style.left = '50%';
   dialogContainer.style.transform = 'translateX(-50%)';
-  dialogContainer.style.padding = '20px';
-  dialogContainer.style.backgroundColor = '#f9f9f9';
+  dialogContainer.style.padding = '30px';
+  dialogContainer.style.backgroundColor = 'black';
   dialogContainer.style.border = '1px solid #ccc';
   dialogContainer.style.borderRadius = '8px';
   dialogContainer.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
@@ -32,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   inputField.placeholder = 'Entrez un code postal';
   inputField.style.padding = '10px';
   inputField.style.fontSize = '16px';
-  inputField.style.marginBottom = '10px';
+  inputField.style.margin = '10px';
   inputField.style.width = '80%';
 
   const submitButton = document.createElement('button');
@@ -68,8 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
          
 
           for (let commune of data) {
-            const regionNom = commune.region ? commune.region.nom : "Non spécifié";
-            const departementNom = commune.departement ? commune.departement.nom : "Non spécifié";
+           
 
             // Crée un élément de liste pour chaque commune
             const listItem = document.createElement('li');
@@ -79,16 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.style.margin = '10px 0';
             listItem.style.backgroundColor = 'black';
             listItem.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
-
+            listItem.style.textAlign="center" ;
             listItem.innerHTML = `
               <strong style="font-size: 24px; color: #4CAF50;">${commune.nom || "Non spécifié"}</strong><br>
               <span style="font-size: 16px; color: white;">
                 <strong>Code postal :</strong> ${codePostal}<br>
                 <strong>Code INSEE :</strong> ${commune.code || "Non spécifié"}<br>
                 <strong>Population :</strong> ${commune.population || "Non spécifié"}<br>
-                <strong>Région :</strong> ${regionNom}<br>
-                <strong>Département :</strong> ${departementNom}
-              </span>
+               
+                
+              
             `;
             resultContainer.appendChild(listItem);
           }
